@@ -1,0 +1,18 @@
+<h2>
+  Tour-search
+</h2>
+<br> Country:
+<input type="text" [(ngModel)]="country">
+<br><br> City:
+<input type="text" [(ngModel)]="city">
+<br><br> Minimum price:
+<input type="number" [(ngModel)]="minPrice">
+<br><br> Maximum price:
+<input type="text" [(ngModel)]="maxPrice">
+<br>
+<br>
+<input type="button" (click)="loadTours(null)" value="Search">
+<br>
+<br> Results:
+<br>
+<app-tour-list [tours]="searchResult" (shouldLoad)="loadTours($event)"></app-tour-list>

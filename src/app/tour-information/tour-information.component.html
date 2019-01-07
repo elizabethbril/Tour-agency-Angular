@@ -1,0 +1,41 @@
+<h2>
+  Tour details
+</h2>
+<input *ngIf="!show && _tour" type="button" (click)="onShowClick()" value="Tour details">
+
+<div *ngIf="_tour" (mouseenter)="loadTour()" >
+  <h2>{{_tour.Name | uppercase}} Details</h2>
+  <div>
+    <span>id: </span>{{_tour.Id}}</div>
+  <h3>
+    Description: {{_tour.Description}}
+    <br>
+    <br> Country: {{_tour.Country}}
+    <br>
+    <br> Price: {{_tour.Price}} {{_tour.Duration}}
+    <br>
+    <br>Client:
+    <label *ngIf="_tour.ClientSurname"> {{_tour.ClientName.Name}} {{_tour.ClientSurname.Surname}}</label>
+    <label *ngIf="!_lot.BuyerUser"> None</label>
+    <br>
+    <label *ngIf="_tour.Duration == 'Determined' || !_tour.ClientSurname.Tours">Start date: {{getStartDate()}}</label>
+    <br>
+  </h3>
+  My Tours:
+  <div (mouseenter)="refreshTour()">
+    <input type="string" [(ngModel)]="tour">
+    <input type="button" (click)="confirmTour()" value="Confirm tour">
+  </div>
+  <h2>Transport</h2>
+  <input [(ngModel)]="transport.Type" type="string" placeholder="Type">
+  <br>
+  <br>
+  <input [(ngModel)]="transport.ArrivalTime" type="string" placeholder="ArrivalTime">
+  <br>
+  <br>
+  <input type="button" (click)="addTransport()" value="Add transport">
+  <br>
+  <br>Page:
+  <input type="button" (click)="loadTourClients()" value="Load tour clients">
+  <br>
+</div>

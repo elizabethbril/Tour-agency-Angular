@@ -1,0 +1,28 @@
+<h2>
+Registration
+</h2>
+
+Email:
+<input type="text" placeholder="Email" [(ngModel)]="user.Email">
+<br>
+<br>Password:
+<input type="password" placeholder="Password" [(ngModel)]="user.Password">
+<br>
+<br>Confirm password:
+<input type="password" placeholder="ConfirmPassword" [(ngModel)]="user.ConfirmPassword">
+<br>
+<br>Name:
+<input type="text" placeholder="Name" [(ngModel)]="user.Name">
+<br>
+<br>Surname:
+<input type="text" placeholder="Surname" [(ngModel)]="user.Surname">
+<br>
+<br>Telephone number:
+<input type="tel" placeholder="TelephoneNumber" [(ngModel)]="user.TelephoneNumber">
+<br>
+<br>Role:
+<input type="text" placeholder="Role" [(ngModel)]="user.Role">
+<br>
+<br>
+<br>
+<input type="button" value="Register" (click)="register()">

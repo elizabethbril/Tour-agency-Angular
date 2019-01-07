@@ -1,21 +1,39 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<h1>Tour agency</h1>
+<div class="navbar">
+  <input type="button" (click)="showCreateTour()" value="Add tour">
+  <br>
+  <div>
+      <br>
+      <input [(ngModel)]="searchName" type="text" placeholder="Tour name">
+    <br><br>
+    <input type="button" (click)="showSearch()" value="Search">
+    <input type="button" (click)="showDetailedSearch()" value="Detailed search">
+  </div>
+  <div> <br>
+    <input [(ngModel)]="Id" type="number" placeholder="Id">
+    <input type="button" (click)="showOneTour()" value="GetById">
+  </div><br>
+  <input type="button" (click)="showAllTours()" value="All Tours"><br>
+  <br>
+  <input type="button" (click)="showAllUsers()" value="Users"><br>
+  <br>
+  <div>
+    <input *ngIf="!currentUser" (click)="showRegister()" type="button" value="Register">
+    <input *ngIf="!currentUser" (click)="showLogin()" type="button" value="Login">
+    <br>
+    <div *ngIf="currentUser"><br>
+      Welcome, {{currentUser.Name}}
+      <input (click)="showProfile()" type="button" value="My profile">
+      <input (click)="logout()" type="button" value="Logout">
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
-<router-outlet></router-outlet>
+<app-tour-list *ngIf="allTours"></app-tour-list>
+<app-create-tour *ngIf="createTour"></app-create-tour>
+<app-register-user *ngIf="register"></app-register-user>
+<app-login-user *ngIf="login" (shouldReload)="reloadCurrentUser()"></app-login-user>
+<app-user-list *ngIf="allUsers"></app-user-list>
+<app-tour-information *ngIf="oneTour" class="tour-container" [tour]="tourById"></app-tour-information>
+<app-tour-list *ngIf="searchTour" [tours]="tourByName" (shouldLoad)="loadTours($event)"></app-tour-list>
+<app-user-profile *ngIf="profile" [currentUser]="currentUser"></app-user-profile>
+<app-tour-search *ngIf="detailedSearch"></app-tour-search>

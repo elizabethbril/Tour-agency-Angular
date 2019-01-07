@@ -1,0 +1,21 @@
+<h2>
+  Tour list
+</h2>
+<br> County:
+<input type="text" [(ngModel)]="country" placeholder="County"><br>
+<br> City:
+<input type="text" [(ngModel)]="city" placeholder="City"><br>
+<br>
+<input type="button" value="Load Tours" (click)="onLoadToursClick()">
+
+<div *ngIf="_tours && _tours.length > 0" class="horizontal-list">
+  <div class="vertical-list">
+    <div *ngFor="let tour of _tours; let i = index" (click)="onSelect(tours)">
+      <h2>
+        {{tour.Name}}  Price: {{tour.Price}}
+        <br>
+      </h2>
+    </div>
+  </div>
+  <app-tour-information class="tour-container" [tour]="selectedTour" (shouldReload)="reload()"></app-tour-information>
+</div>

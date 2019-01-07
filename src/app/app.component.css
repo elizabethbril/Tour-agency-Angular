@@ -1,0 +1,22 @@
+.navbar {
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightblue;
+  border: 1px solid black;
+  margin: -8px;
+}
+
+button {
+  background-color: lightseagreen;
+  border-color: lightblue;
+  border-style: solid;
+  border-width: 8px;
+}
+
+.tour-container {
+  margin: 8px;
+  overflow-y: scroll;
+  width: 100%;
+}

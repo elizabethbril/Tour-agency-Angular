@@ -1,0 +1,20 @@
+<br> Page:
+<input type="number" [(ngModel)]="page" placeholder="Page">
+<br> Amount:
+<input type="number" [(ngModel)]="amount" placeholder="Amount">
+<input type="button" (click)="loadUsers()" value="Load users">
+
+<div *ngIf="users.length > 0" class="horizontal-list">
+  <div class="vertical-list">
+    <div *ngFor="let user of users; let i = index" (click)="onSelect(user)">
+      <h3>
+        {{user.Name}} {{user.Surname}}
+        <br> Email: {{user.Email}}
+        <br>
+      </h3>
+    </div>
+  </div>
+  <div *ngIf="selectedUser" class="user-container">
+    <app-user-info [currentUser]="selectedUser" (shouldReload)="reload($event)"></app-user-info>
+  </div>
+</div>

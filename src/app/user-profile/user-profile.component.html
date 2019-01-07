@@ -1,0 +1,37 @@
+<p>
+  user-profile
+</p>
+<br>
+
+<h3>Email: {{currentUser.Email}} </h3>
+Name:
+<input [(ngModel)]="currentUser.Name" type="text">
+<br>
+<br> Surname:
+<input [(ngModel)]="currentUser.Surname" type="text">
+<br>
+<br> Telephone number:
+<input [(ngModel)]="currentUser.TelephoneNumber" type="text">
+<br>
+<br>
+<input type="button" (click)="loadTour()" value="Load my tour">
+<br>
+<br>
+<input type="button" (click)="putUser()" value="Confirm changes">
+<br>
+<br>
+<input type="button" (click)="deleteCurrentUser()" value="Delete my account">
+<br>
+<br>
+<div class="horizontal-list">
+  <div class="vertical-list">
+    <div *ngFor="let tour of currentUser.Tours" (click)="selectTour(tour)">
+      <h3>
+        {{tour.Name}}
+      </h3>
+    </div>
+  </div>
+  <app-tour-editor *ngIf="selectedTour" class="tour-container" [tour]="selectedTour" (shouldReload)="reload($event) "></app-tour-editor>
+  <br>
+  <br>
+</div>

@@ -1,0 +1,45 @@
+<h2>
+  Create tour
+</h2>
+<br> Tour name:
+<input [(ngModel)]="tour.Name" placeholder="Name" type="text">
+<br>
+<br>Description:
+<input [(ngModel)]="tour.Description" placeholder="Description" type="text">
+<br>
+<br>Category:
+<input [(ngModel)]="tour.Type" placeholder="Type" type="text">
+<br>
+<br>Country:
+<input [(ngModel)]="tour.Country" placeholder="Country" type="text">
+<br>
+<br>City:
+<input [(ngModel)]="tour.City" placeholder="City" type="text">
+<br>
+<br>Price:
+<input [(ngModel)]="tour.Price" placeholder="price" type="number">
+<br>
+<br>Tour country:
+<select [(ngModel)]="tour.Country">
+  <option>Ukraine</option>
+  <option>Poland</option>
+  <option>Germany</option>
+  <option>Turkey</option>
+  <option>Egypt</option>
+  <option>England</option>
+  <option>USA</option>
+  <option>Canada</option>
+</select>
+<br>
+<br>
+<div *ngIf="!startNow">Start date:
+  <input [(ngModel)]="tour.Duration" placeholder="Start date" type="datetime-local">
+</div>
+<br>
+<br>Transport:
+    <input [(ngModel)]="tour.Transport" placeholder="Transport" type="text">
+<br>
+<br>
+<input type="button" (click)="addTour()" value="Add tour">
+<br>
+<br>

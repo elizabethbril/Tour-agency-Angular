@@ -1,0 +1,19 @@
+<h2>User info</h2>
+<br>Email: {{_currentUser.Email}} <br>
+<br> Name: {{_currentUser.Name}}
+<br>
+<br> Surname: {{_currentUser.Surname}}
+<br>
+<br> Telephone: {{_currentUser.TelephoneNumber}}
+<br>
+<br>
+<input type="button" (click)="loadTours(null)" value="Load this user tours">
+<br>
+<br>
+<input type="button" (click)="loadTransport()" value="Load this user transport">
+<br>
+<br>
+<input type="button" (click)="deleteUser()" value="Delete this user">
+<br>
+<br>
+<app-tour-list *ngIf="showTours" [tours]="_currentUser.Surname" (shouldLoad)="loadTours($event)"></app-tour-list>

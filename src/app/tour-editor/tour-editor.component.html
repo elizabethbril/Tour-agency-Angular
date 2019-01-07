@@ -1,0 +1,35 @@
+<h2>
+  Tour-editor
+</h2>
+<input *ngIf="!show && _tour" type="button" (click)="onShowClick()" value="Tour details">
+
+<div *ngIf="show">
+  <h2>{{_tour.Name | uppercase}} Editor</h2>
+  <h3>
+    Description:
+    <input type="text" [(ngModel)]="_tour.Description">
+    <br>
+    <br> Type:
+    <input type="text" [(ngModel)]="_tour.Type">
+    <br>
+    <br> Price:
+    <input *ngIf="!_tour.ClientName" type="number" [(ngModel)]="_tour.Price">
+    <br>
+    <br> Countries:
+    <select *ngIf="!_tour.ClientSurname" [(ngModel)]="_tour.Country">
+      <option>Ukraine</option>
+      <option>Poland</option>
+      <option>Canada</option>
+      <option>Germany</option>
+    </select>
+    <br>
+    <br> Tour duration:
+    <input *ngIf="!_tour.ClientSurname && _tour.Duration != 'Relative'" type="datetime-local" [(ngModel)]="_tour.Duration">
+
+    <br>
+    <br>
+  </h3>
+
+  <input type="button" (click)="deleteTour()" value="Delete this tour">
+  <input type="button" (click)="updateTour()" value="Confirm changes">
+  <br>
